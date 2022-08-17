@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author Administrator
- * @version 1.0
+ * @author sqx
  **/
 @RestController
 @Api(value="商户平台应用接口",tags = "商户平台应用接口",description = "商户平台应用接口")

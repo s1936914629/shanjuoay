@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * </p>
  *
  * @author author
- * @since 2019-12-01
+ * @since 2022-08-17
  */
 @Repository
 public interface StaffMapper extends BaseMapper<Staff> {

@@ -7,8 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author Administrator
- * @version 1.0
+ * @author sqx
  **/
 @ApiModel(value = "MerchantDTO", description = "商户信息")
 @Data
