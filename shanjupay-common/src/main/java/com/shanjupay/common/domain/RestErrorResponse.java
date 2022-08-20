@@ -19,6 +19,4 @@ public class RestErrorResponse {
         this.errCode = errCode;
         this.errMessage= errMessage;
     }
-
-
 }

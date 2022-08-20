@@ -11,6 +11,8 @@ import com.shanjupay.merchant.entity.Merchant;
 import com.shanjupay.merchant.mapper.MerchantMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * Created by Administrator.
  */
@@ -38,17 +40,27 @@ public class MerchantServiceImpl implements MerchantService {
      * @return 注册成功的商户信息
      */
     @Override
+    @Transactional
     public MerchantDTO createMerchant(MerchantDTO merchantDTO) throws BusinessException {
         //校验参数的合法性
         if(merchantDTO == null){
             throw new BusinessException(CommonErrorCode.E_100108);
         }
+        //手机号非空校验
         if(StringUtils.isBlank(merchantDTO.getMobile())){
             throw new BusinessException(CommonErrorCode.E_100112);
         }
         //手机号格式校验
         if(!PhoneUtil.isMatches(merchantDTO.getMobile())){
             throw new BusinessException(CommonErrorCode.E_100109);
+        }
+        //联系人非空校验
+        if (StringUtils.isBlank(merchantDTO.getUsername())) {
+            throw new BusinessException(CommonErrorCode.E_100110);
+        }
+        //密码非空校验
+        if (StringUtils.isBlank(merchantDTO.getPassword())) {
+            throw new BusinessException(CommonErrorCode.E_100111);
         }
         //校验手机号的唯一性
         //根据手机号查询商户表，如果存在记录则说明手机号已存在
