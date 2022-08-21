@@ -6,18 +6,26 @@ import com.shanjupay.common.util.PhoneUtil;
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
 import com.shanjupay.merchant.convert.MerchantRegisterConvert;
+import com.shanjupay.merchant.service.FileService;
 import com.shanjupay.merchant.service.SmsService;
 import com.shanjupay.merchant.vo.MerchantRegisterVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.UUID;
+
 /**
  * @author sqx
  **/
 @RestController
+@RequestMapping("/merchant")
 @Api(value="商户平台应用接口",tags = "商户平台应用接口",description = "商户平台应用接口")
 public class MerchantController {
 
@@ -26,6 +34,9 @@ public class MerchantController {
 
     @Autowired //注入本地的bean
     SmsService smsService;
+
+    @Autowired
+    FileService fileService;
 
     @ApiOperation(value="根据id查询商户信息")
     @GetMapping("/merchants/{id}")
@@ -72,6 +83,33 @@ public class MerchantController {
         merchantService.createMerchant(merchantDTO);
         return merchantRegisterVO;
     }
+
+    @ApiOperation("证件上传")
+    @PostMapping("/upload")
+    public String upload(@ApiParam(value = "上传文件",required = true) @RequestParam("file")  MultipartFile file) throws IOException {
+        //原始文件名称
+        String originalFilename = file.getOriginalFilename();
+        //文件后缀
+        String suffix = originalFilename.substring(originalFilename.lastIndexOf(".") - 1);
+        //文件名称
+        String fileName = UUID.randomUUID().toString() + suffix;
+        //上传文件，返回文件下载url
+        String fileurl = fileService.upload(file.getBytes(), fileName);
+        return fileurl;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @ApiOperation("测试")
     @GetMapping(path = "/hello")
