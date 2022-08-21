@@ -5,14 +5,14 @@ import com.shanjupay.common.domain.CommonErrorCode;
 import com.shanjupay.common.util.PhoneUtil;
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
+import com.shanjupay.merchant.common.util.SecurityUtil;
+import com.shanjupay.merchant.convert.MerchantDetailConvert;
 import com.shanjupay.merchant.convert.MerchantRegisterConvert;
 import com.shanjupay.merchant.service.FileService;
 import com.shanjupay.merchant.service.SmsService;
+import com.shanjupay.merchant.vo.MerchantDetailVO;
 import com.shanjupay.merchant.vo.MerchantRegisterVO;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +24,8 @@ import java.util.UUID;
 /**
  * @author sqx
  **/
-@RestController
 @RequestMapping("/merchant")
+@RestController
 @Api(value="商户平台应用接口",tags = "商户平台应用接口",description = "商户平台应用接口")
 public class MerchantController {
 
@@ -84,36 +84,41 @@ public class MerchantController {
         return merchantRegisterVO;
     }
 
-    @ApiOperation("证件上传")
+    //上传证件照
+    @ApiOperation("上传证件照")
     @PostMapping("/upload")
-    public String upload(@ApiParam(value = "上传文件",required = true) @RequestParam("file")  MultipartFile file) throws IOException {
-        //原始文件名称
-        String originalFilename = file.getOriginalFilename();
-        //文件后缀
-        String suffix = originalFilename.substring(originalFilename.lastIndexOf(".") - 1);
+    public String upload(@ApiParam(value = "证件照",required = true) @RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        //调用fileService上传文件
+        //生成的文件名称fileName，要保证它的唯一
+        //文件原始名称
+        String originalFilename = multipartFile.getOriginalFilename();
+        //扩展名
+        String suffix = originalFilename.substring(originalFilename.lastIndexOf(".")-1);
         //文件名称
-        String fileName = UUID.randomUUID().toString() + suffix;
-        //上传文件，返回文件下载url
-        String fileurl = fileService.upload(file.getBytes(), fileName);
-        return fileurl;
+        String fileName = UUID.randomUUID()+suffix;
+        //byte[] bytes,String fileName
+        return fileService.upload(multipartFile.getBytes(),fileName);
     }
 
+    @ApiOperation("资质申请")
+    @PostMapping("/my/merchants/save")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "merchantInfo", value = "商户认证资料", required = true, dataType = "MerchantDetailVO", paramType = "body")
+    })
+    public void saveMerchant(@RequestBody MerchantDetailVO merchantInfo){
+        //解析token，取出当前登录商户的id
+        Long merchantId = SecurityUtil.getMerchantId();
 
-
-
-
-
-
-
-
-
-
-
+        //Long merchantId,MerchantDTO merchantDTO
+        MerchantDTO merchantDTO = MerchantDetailConvert.INSTANCE.vo2dto(merchantInfo);
+        merchantService.applyMerchant(merchantId,merchantDTO);
+    }
 
 
     @ApiOperation("测试")
     @GetMapping(path = "/hello")
-    public String hello(){
+    public String hello() {
         return "hello";
     }
 
@@ -121,6 +126,6 @@ public class MerchantController {
     @ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "string")
     @PostMapping(value = "/hi")
     public String hi(String name) {
-        return "hi,"+name;
+        return "hi," + name;
     }
 }

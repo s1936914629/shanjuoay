@@ -1,10 +1,5 @@
 package com.shanjupay.merchant.vo;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,8 +8,9 @@ import java.io.Serializable;
 
 /**
  * 用于接收前端提交的数据
- * @author sqx
- **/
+ * @auther: sqx
+ * @Date: 2022/8/20
+ */
 
 @ApiModel(value = "MerchantRegisterVO", description = "商户注册信息")
 @Data
