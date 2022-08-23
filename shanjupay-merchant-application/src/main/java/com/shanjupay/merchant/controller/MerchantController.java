@@ -24,7 +24,7 @@ import java.util.UUID;
 /**
  * @author sqx
  **/
-@RequestMapping("/merchant")
+
 @RestController
 @Api(value="商户平台应用接口",tags = "商户平台应用接口",description = "商户平台应用接口")
 public class MerchantController {

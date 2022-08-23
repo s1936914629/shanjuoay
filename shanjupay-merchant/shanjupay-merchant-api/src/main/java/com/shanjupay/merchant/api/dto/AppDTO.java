@@ -11,13 +11,12 @@ import java.io.Serializable;
  * @Date: 2022/8/20
  */
 @Data
-@ApiModel(value="AppDTO", description="")
+@ApiModel(value="AppDTO", description="应用信息")
 public class AppDTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
 
-    private Long id;
-
+    @ApiModelProperty("应用id，新增时无需传入")
     private String appId;
 
     @ApiModelProperty(value = "商店名称")
@@ -34,3 +33,4 @@ public class AppDTO implements Serializable {
 
 
 }
+

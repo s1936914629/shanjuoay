@@ -7,6 +7,7 @@ import com.shanjupay.merchant.api.dto.MerchantDTO;
 import java.util.List;
 
 /**
+ * 应用管理相关的接口
  * @auther: sqx
  * @Date: 2022/8/21
  */
@@ -19,7 +20,7 @@ public interface AppService {
      * @return 创建成功的应用信息
      * @throws BusinessException
      */
-    AppDTO createApp(Long merchantId, AppDTO appDTO) throws BusinessException;
+    AppDTO createApp(Long merchantId,AppDTO appDTO) throws BusinessException;
 
     /**
      * 根据商户id查询应用列表
