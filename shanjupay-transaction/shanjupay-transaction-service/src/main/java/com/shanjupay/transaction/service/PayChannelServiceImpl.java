@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.transaction.api.PayChannelService;
+import com.shanjupay.transaction.api.dto.PayChannelDTO;
 import com.shanjupay.transaction.api.dto.PlatformChannelDTO;
 import com.shanjupay.transaction.convert.PlatformChannelConvert;
 import com.shanjupay.transaction.entity.AppPlatformChannel;
@@ -85,5 +86,17 @@ public class PayChannelServiceImpl implements PayChannelService {
         }else {
             return 0;
         }
+    }
+
+    /**
+     * 根据服务类型查询支付渠道
+     *
+     * @param platformChannelCode 服务类型编码
+     * @return 支付渠道列表
+     * @throws BusinessException
+     */
+    @Override
+    public List<PayChannelDTO> queryPayChannelByPlatformChannel(String platformChannelCode) throws BusinessException {
+        return platformChannelMapper.selectPayChannelByPlatformChannel(platformChannelCode);
     }
 }
