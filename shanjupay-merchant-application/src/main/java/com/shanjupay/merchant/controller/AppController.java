@@ -3,6 +3,7 @@ package com.shanjupay.merchant.controller;
 import com.shanjupay.merchant.api.AppService;
 import com.shanjupay.merchant.api.dto.AppDTO;
 import com.shanjupay.merchant.common.util.SecurityUtil;
+import com.shanjupay.transaction.api.PayChannelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

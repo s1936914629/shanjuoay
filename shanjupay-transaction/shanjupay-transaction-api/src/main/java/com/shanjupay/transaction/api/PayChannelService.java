@@ -18,6 +18,22 @@ public interface PayChannelService {
      */
     List<PlatformChannelDTO> queryPlatformChannel() throws BusinessException;
 
+    /**
+     * 为某个应用绑定一个服务类型
+     * @param appId 应用id
+     * @param platformChannelCodes  服务类型的code
+     * @throws BusinessException
+     */
+    void bindPlatformChannelForApp(String appId,String platformChannelCodes) throws BusinessException;
+
+    /**
+     * 应用绑定服务类型的状态
+     * @param appId 应用id
+     * @param platformChannel
+     * @return  已绑定 1,否则0
+     * @throws BusinessException
+     */
+    int queryAppBindPlatformChannel(String appId,String platformChannel) throws BusinessException;
 
 
 
