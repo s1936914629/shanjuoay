@@ -1,11 +1,5 @@
 package com.shanjupay.merchant.common.intercept;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
-
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.common.domain.CommonErrorCode;
 import com.shanjupay.common.domain.ErrorCode;
@@ -21,6 +15,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 全局异常处理器
+ * @auther: sqx
+ * @Date: 2022/8/20
+ */
+
 @ControllerAdvice//与@Exceptionhandler配合使用实现全局异常处理
 public class GlobalExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -29,9 +29,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public RestErrorResponse processExcetion(HttpServletRequest request,
-                                             HttpServletResponse response,
-                                             Exception e){
+    public RestErrorResponse processExcetion( HttpServletRequest request,
+                                              HttpServletResponse response,
+                                              Exception e){
         //解析异常信息
         //如果是系统自定义异常，直接取出errCode和errMessage
         if(e instanceof BusinessException){

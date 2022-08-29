@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 获取当前登录用户信息
  * 前端配置token，后续每次请求并通过Header方式发送至后端
+ *
  * @auther: sqx
  * @Date: 2022/8/21
  */
@@ -48,6 +49,7 @@ public class SecurityUtil {
 
     /**
      * 获取当前登录用户信息
+     *
      * @return
      */
     public static LoginUser getUser() {

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 应用管理相关的接口
+ *
  * @auther: sqx
  * @Date: 2022/8/21
  */
@@ -15,15 +16,17 @@ public interface AppService {
 
     /**
      * 创建应用
+     *
      * @param merchantId 商户id
-     * @param appDTO 应用信息
+     * @param appDTO     应用信息
      * @return 创建成功的应用信息
      * @throws BusinessException
      */
-    AppDTO createApp(Long merchantId,AppDTO appDTO) throws BusinessException;
+    AppDTO createApp(Long merchantId, AppDTO appDTO) throws BusinessException;
 
     /**
      * 根据商户id查询应用列表
+     *
      * @param merchantId
      * @return
      * @throws BusinessException
@@ -32,10 +35,11 @@ public interface AppService {
 
     /**
      * 根据应用id查询应用信息
+     *
      * @param appId
      * @return
      * @throws BusinessException
      */
-    AppDTO getAppById(String appId)throws BusinessException;
+    AppDTO getAppById(String appId) throws BusinessException;
 
 }

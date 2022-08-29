@@ -13,8 +13,8 @@ import java.util.List;
  *  Mapper 接口
  * </p>
  *
- * @author author
- * @since 2019-11-15
+ * @author sqx
+ * @since 2022/08/26
  */
 @Repository
 public interface PlatformChannelMapper extends BaseMapper<PlatformChannel> {
@@ -35,3 +35,4 @@ public interface PlatformChannelMapper extends BaseMapper<PlatformChannel> {
             "  AND pla.CHANNEL_CODE = #{platformChannelCode}  ")
     List<PayChannelDTO> selectPayChannelByPlatformChannel(String platformChannelCode);
 }
+

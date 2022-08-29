@@ -76,6 +76,7 @@ public class AppServiceImpl implements AppService {
 
     /**
      * 根据商户id查询应用列表
+     *
      * @param merchantId
      * @return
      * @throws BusinessException
@@ -88,6 +89,7 @@ public class AppServiceImpl implements AppService {
 
     /**
      * 根据应用id查询应用信息
+     *
      * @param appId
      * @return
      * @throws BusinessException

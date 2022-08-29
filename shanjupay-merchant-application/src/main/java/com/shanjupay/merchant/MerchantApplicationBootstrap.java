@@ -21,16 +21,15 @@ public class MerchantApplicationBootstrap {
         SpringApplication.run(MerchantApplicationBootstrap.class,args);
     }
 
+
     @Bean
-    public RestTemplate restTemplate(){
+    RestTemplate restTemplate(){
         RestTemplate restTemplate = new RestTemplate(new OkHttp3ClientHttpRequestFactory());
-        //消息转换器
-        List<HttpMessageConverter<?>> msg = restTemplate.getMessageConverters();
-        //配置消息转换器StringHttpMessageConverter，并设置utf‐8
-        msg.set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));//支持中文字符集，默认ISO‐8859‐1，支持utf‐8
-
-        return restTemplate;
+        //得到消息转换器
+        List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
+        //指定StringHttpMessageConverter消息转换器的字符集为utf-8
+        messageConverters.set(1,new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return  restTemplate;
     }
-
 
 }

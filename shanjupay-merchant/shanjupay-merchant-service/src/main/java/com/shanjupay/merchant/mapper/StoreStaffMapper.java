@@ -16,5 +16,3 @@ import org.springframework.stereotype.Repository;
 public interface StoreStaffMapper extends BaseMapper<StoreStaff> {
 
 }
-
-

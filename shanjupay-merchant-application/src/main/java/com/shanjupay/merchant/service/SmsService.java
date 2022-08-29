@@ -1,11 +1,11 @@
 package com.shanjupay.merchant.service;
 
+import com.shanjupay.common.domain.BusinessException;
+
 /*
  * @auther: sqx
  * @Date: 2022/8/20
  */
-
-import com.shanjupay.common.domain.BusinessException;
 
 public interface SmsService {
 

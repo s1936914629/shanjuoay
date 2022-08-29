@@ -1,6 +1,8 @@
 package com.shanjupay.merchant.convert;
 
-/*
+/**
+ * 定义dto和entity之间的转换规则
+ *
  * @auther: sqx
  * @Date: 2022/8/20
  */
@@ -13,30 +15,15 @@ import org.mapstruct.factory.Mappers;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 定义dto和entity之间的转换规则
- * Created by Administrator.
- */
 @Mapper //对象属性的映射
 public interface MerchantConvert {
 
     //转换类实例
     MerchantConvert INSTANCE = Mappers.getMapper(MerchantConvert.class);
 
-    //把dto转换成entity
-    Merchant dto2entity(MerchantDTO merchantDTO);
-
-    //把entity转换成dto
-    MerchantDTO entity2dto(Merchant merchant);
-
-    //list之间也可以转换，很entity的List转成MerchantDTO list
-    List<MerchantDTO> entityList2dtoList(List<Merchant> merchants);
-
-
-
     public static void main(String[] args) {
         //将dto转成entity
-        Merchant merchant  =new Merchant();
+        Merchant merchant = new Merchant();
         merchant.setUsername("测试");
         merchant.setMobile("123456");
         MerchantDTO merchantDTO = MerchantConvert.INSTANCE.entity2dto(merchant);
@@ -55,5 +42,14 @@ public interface MerchantConvert {
         System.out.println(list);
 
     }
+
+    //把dto转换成entity
+    Merchant dto2entity(MerchantDTO merchantDTO);
+
+    //把entity转换成dto
+    MerchantDTO entity2dto(Merchant merchant);
+
+    //list之间也可以转换，很entity的List转成MerchantDTO list
+    List<MerchantDTO> entityList2dtoList(List<Merchant> merchants);
 
 }

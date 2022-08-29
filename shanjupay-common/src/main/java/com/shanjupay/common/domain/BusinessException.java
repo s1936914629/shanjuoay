@@ -8,7 +8,6 @@ package com.shanjupay.common.domain;
 
 public class BusinessException extends RuntimeException {
 
-    //错误代码
     private ErrorCode errorCode;
 
     public BusinessException(ErrorCode errorCode) {
@@ -27,3 +26,4 @@ public class BusinessException extends RuntimeException {
         return errorCode;
     }
 }
+

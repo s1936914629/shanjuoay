@@ -13,11 +13,11 @@ public class PayChannelParamDTO implements Serializable {
     @ApiModelProperty("参数配置id,新增时无需")
     private Long id;
 
-	@ApiModelProperty("应用的appId,是业务id")
-	private String appId;
+    @ApiModelProperty("应用的appId,是业务id")
+    private String appId;
 
-	@ApiModelProperty("应用绑定的服务类型对应的code")
-	private String platformChannelCode;
+    @ApiModelProperty("应用绑定的服务类型对应的code")
+    private String platformChannelCode;
 
     @ApiModelProperty("参数配置名称")
     private String channelName;

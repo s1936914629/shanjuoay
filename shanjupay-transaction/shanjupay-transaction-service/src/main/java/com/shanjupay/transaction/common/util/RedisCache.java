@@ -20,6 +20,7 @@ public class RedisCache implements Cache {
 
     /**
      * 模糊查询，获取key
+     *
      * @param pattern
      * @return
      */
@@ -30,6 +31,7 @@ public class RedisCache implements Cache {
 
     /**
      * 获取所有key
+     *
      * @return
      */
     @Override
@@ -39,6 +41,7 @@ public class RedisCache implements Cache {
 
     /**
      * 判断key是否存在
+     *
      * @param key
      * @return
      */
@@ -49,6 +52,7 @@ public class RedisCache implements Cache {
 
     /**
      * 根据key删除
+     *
      * @param key
      */
     @Override
@@ -58,6 +62,7 @@ public class RedisCache implements Cache {
 
     /**
      * 存入redis
+     *
      * @param key
      * @param value
      */
@@ -68,6 +73,7 @@ public class RedisCache implements Cache {
 
     /**
      * 存入redis并设置失效时间
+     *
      * @param key
      * @param value
      * @param expire
@@ -79,6 +85,7 @@ public class RedisCache implements Cache {
 
     /**
      * 根据key获取value
+     *
      * @param key
      * @return
      */
@@ -89,6 +96,7 @@ public class RedisCache implements Cache {
 
     /**
      * 设置失效时间
+     *
      * @param key
      * @param expire
      */
@@ -99,6 +107,7 @@ public class RedisCache implements Cache {
 
     /**
      * 在原有的值基础上新增字符串到末尾
+     *
      * @param key
      * @param value
      */
@@ -109,6 +118,7 @@ public class RedisCache implements Cache {
 
     /**
      * 获取原来key键对应的值并重新赋新值
+     *
      * @param key
      * @param newValue
      * @return
@@ -120,6 +130,7 @@ public class RedisCache implements Cache {
 
     /**
      * 如果键不存在则新增,存在则不改变已经有的值
+     *
      * @param key
      * @param value
      * @return
@@ -131,6 +142,7 @@ public class RedisCache implements Cache {
 
     /**
      * 以增量的方式将long值存储在变量中
+     *
      * @param key
      * @param delta
      * @return
@@ -141,4 +153,3 @@ public class RedisCache implements Cache {
     }
 
 }
-

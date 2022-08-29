@@ -7,14 +7,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.*;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 /*
  * @auther: sqx
@@ -24,54 +22,44 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @Slf4j
 public class RestTemplateTest {
+
     @Autowired
     RestTemplate restTemplate;
 
-    //获取网页信息
+    //测试使用restTemplate作为http的客户端向http服务端发起请求
     @Test
-    public void getHtml1() {
-        String url = "https://www.baidu.com/";
+    public void gethtml(){
+        String url = "http://www.baidu.com/";
+        //向url发送http请求，得到响应结果
         ResponseEntity<String> forEntity = restTemplate.getForEntity(url, String.class);
         String body = forEntity.getBody();
         System.out.println(body);
+
     }
 
-    //获取验证码测试方法
+    //向验证码服务发送请求，获取验证码
+    //http://localhost:56085/sailing/generate?effectiveTime=600&name=sms
     @Test
-    public void testGetSmsCode() {
-        String url = "http://localhost:56085/sailing/generate?name=sms&effectiveTime=600";//验证码过期时间为600秒
-        String phone = "13434343434";
-        log.info("调用短信微服务发送验证码：url:{}", url);
+    public void getSmsCode(){
+        String url = "http://localhost:56085/sailing/generate?effectiveTime=600&name=sms";
 
         //请求体
-        HashMap<String, Object> body = new HashMap<>();
-        body.put("mobile", phone);
+        Map<String,Object> body = new HashMap<>();
+        body.put("mobile","133456");
         //请求头
-        HttpHeaders httpHeaders = new HttpHeaders();
-        //设置数据格式为json
+        HttpHeaders httpHeaders =new HttpHeaders();
+        //指定Content-Type: application/json
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        //封装请求参数
-        HttpEntity<HashMap<String, Object>> entity = new HttpEntity<>(body, httpHeaders);
+        //请求信息,传入body，header
+        HttpEntity httpEntity = new HttpEntity(body,httpHeaders);
+        //向url请求
+        ResponseEntity<Map> exchange = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Map.class);
 
-        Map responseMap = null;
-
-        try {
-            ResponseEntity<Map> exchange = restTemplate.exchange(url, HttpMethod.POST, entity, Map.class);
-            log.info("调用短信微服务发送验证码: 返回值:{}", JSON.toJSONString(exchange));
-            //获取响应
-            responseMap = exchange.getBody();
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.info(e.getMessage(), e);
-        }
-
-        //取出body中的result数据
-        if (responseMap != null || responseMap.get("result")  != null) {
-            Map resultMap = (Map) responseMap.get("result");
-            String value = resultMap.get("key").toString();
-            System.out.println(value);
-        }
-
-
+        log.info("请求验证码服务，得到响应:{}", JSON.toJSONString(exchange));
+        Map bodyMap = exchange.getBody();
+        System.out.println(bodyMap);
+        Map result = (Map) bodyMap.get("result");
+        String key = (String) result.get("key");
+        System.out.println(key);
     }
 }

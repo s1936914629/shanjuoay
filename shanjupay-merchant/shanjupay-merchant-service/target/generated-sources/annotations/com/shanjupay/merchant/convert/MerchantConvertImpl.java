@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-08-21T21:19:30+0800",
+    date = "2022-08-29T18:13:42+0800",
     comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_332 (Amazon.com Inc.)"
 )
 public class MerchantConvertImpl implements MerchantConvert {
@@ -23,9 +23,7 @@ public class MerchantConvertImpl implements MerchantConvert {
 
         merchant.setId( merchantDTO.getId() );
         merchant.setMerchantName( merchantDTO.getMerchantName() );
-        if ( merchantDTO.getMerchantNo() != null ) {
-            merchant.setMerchantNo( Long.parseLong( merchantDTO.getMerchantNo() ) );
-        }
+        merchant.setMerchantNo( merchantDTO.getMerchantNo() );
         merchant.setMerchantAddress( merchantDTO.getMerchantAddress() );
         merchant.setMerchantType( merchantDTO.getMerchantType() );
         merchant.setBusinessLicensesImg( merchantDTO.getBusinessLicensesImg() );
@@ -50,9 +48,7 @@ public class MerchantConvertImpl implements MerchantConvert {
 
         merchantDTO.setId( merchant.getId() );
         merchantDTO.setMerchantName( merchant.getMerchantName() );
-        if ( merchant.getMerchantNo() != null ) {
-            merchantDTO.setMerchantNo( String.valueOf( merchant.getMerchantNo() ) );
-        }
+        merchantDTO.setMerchantNo( merchant.getMerchantNo() );
         merchantDTO.setMerchantAddress( merchant.getMerchantAddress() );
         merchantDTO.setMerchantType( merchant.getMerchantType() );
         merchantDTO.setBusinessLicensesImg( merchant.getBusinessLicensesImg() );

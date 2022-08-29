@@ -24,7 +24,7 @@ public class PayOrderDTO implements Serializable {
     private String openId;//c端付款用户身份标识
     private String authCode;//付款条码，支付宝或者微信点“付款”产生的付款条码    在b扫c时，应由前端传过来
     private String device;//设备,存放UA等信息
-	private String payChannel;//详细原始支付渠道编码
-	private String clientIp; //请求IP
+    private String payChannel;//详细原始支付渠道编码
+    private String clientIp; //请求IP
 
 }

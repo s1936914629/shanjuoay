@@ -5,10 +5,10 @@ import com.shanjupay.merchant.vo.MerchantRegisterVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-/*
+/**
+ * 将商户注册vo和dto进行转换
  * @auther: sqx
  * @Date: 2022/8/20
- * 将商户注册vo和dto进行转换
  */
 @Mapper
 public interface MerchantRegisterConvert {

@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-08-23T22:45:52+0800",
+    date = "2022-08-29T18:13:47+0800",
     comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_332 (Amazon.com Inc.)"
 )
 public class MerchantDetailConvertImpl implements MerchantDetailConvert {
@@ -20,7 +20,9 @@ public class MerchantDetailConvertImpl implements MerchantDetailConvert {
         MerchantDetailVO merchantDetailVO = new MerchantDetailVO();
 
         merchantDetailVO.setMerchantName( merchantDTO.getMerchantName() );
-        merchantDetailVO.setMerchantNo( merchantDTO.getMerchantNo() );
+        if ( merchantDTO.getMerchantNo() != null ) {
+            merchantDetailVO.setMerchantNo( String.valueOf( merchantDTO.getMerchantNo() ) );
+        }
         merchantDetailVO.setMerchantAddress( merchantDTO.getMerchantAddress() );
         merchantDetailVO.setMerchantType( merchantDTO.getMerchantType() );
         merchantDetailVO.setBusinessLicensesImg( merchantDTO.getBusinessLicensesImg() );
@@ -41,7 +43,9 @@ public class MerchantDetailConvertImpl implements MerchantDetailConvert {
         MerchantDTO merchantDTO = new MerchantDTO();
 
         merchantDTO.setMerchantName( merchantDetailVO.getMerchantName() );
-        merchantDTO.setMerchantNo( merchantDetailVO.getMerchantNo() );
+        if ( merchantDetailVO.getMerchantNo() != null ) {
+            merchantDTO.setMerchantNo( Long.parseLong( merchantDetailVO.getMerchantNo() ) );
+        }
         merchantDTO.setMerchantAddress( merchantDetailVO.getMerchantAddress() );
         merchantDTO.setMerchantType( merchantDetailVO.getMerchantType() );
         merchantDTO.setBusinessLicensesImg( merchantDetailVO.getBusinessLicensesImg() );

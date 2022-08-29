@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 /**
  * 资质申请信息
+ *
  * @auther: sqx
  * @Date: 2022/8/21
  */

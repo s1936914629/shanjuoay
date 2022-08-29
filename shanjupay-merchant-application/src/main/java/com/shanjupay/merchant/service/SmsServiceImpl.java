@@ -1,10 +1,5 @@
 package com.shanjupay.merchant.service;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
 import com.alibaba.fastjson.JSON;
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.common.domain.CommonErrorCode;
@@ -17,6 +12,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
+
+/*
+ * @auther: sqx
+ * @Date: 2022/8/20
+ */
 
 @org.springframework.stereotype.Service  //实例为一个bean
 @Slf4j

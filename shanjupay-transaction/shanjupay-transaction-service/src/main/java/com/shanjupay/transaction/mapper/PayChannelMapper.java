@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
  *  Mapper 接口
  * </p>
  *
- * @author author
- * @since 2019-11-15
+ * @author sqx
+ * @since 2022/08/26
  */
 @Repository
 public interface PayChannelMapper extends BaseMapper<PayChannel> {

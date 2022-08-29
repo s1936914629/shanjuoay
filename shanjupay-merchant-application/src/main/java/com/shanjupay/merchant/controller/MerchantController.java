@@ -106,7 +106,7 @@ public class MerchantController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "merchantInfo", value = "商户认证资料", required = true, dataType = "MerchantDetailVO", paramType = "body")
     })
-    public void saveMerchant(@RequestBody MerchantDetailVO merchantInfo){
+    public void saveMerchant(@RequestBody  MerchantDetailVO merchantInfo){
         //解析token，取出当前登录商户的id
         Long merchantId = SecurityUtil.getMerchantId();
 
@@ -115,10 +115,9 @@ public class MerchantController {
         merchantService.applyMerchant(merchantId,merchantDTO);
     }
 
-
     @ApiOperation("测试")
     @GetMapping(path = "/hello")
-    public String hello() {
+    public String hello(){
         return "hello";
     }
 
@@ -126,6 +125,6 @@ public class MerchantController {
     @ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "string")
     @PostMapping(value = "/hi")
     public String hi(String name) {
-        return "hi," + name;
+        return "hi,"+name;
     }
 }

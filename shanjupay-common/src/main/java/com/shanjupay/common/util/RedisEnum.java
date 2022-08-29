@@ -5,6 +5,7 @@ package com.shanjupay.common.util;
  * @Date: 2022/8/29
  */
 public enum RedisEnum {
+
     /**
      * 数据字典Service - 根据字典类型查询字典数据
      */
