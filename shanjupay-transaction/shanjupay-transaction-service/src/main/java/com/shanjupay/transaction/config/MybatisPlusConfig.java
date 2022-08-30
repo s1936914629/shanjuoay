@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * Mybatis-Plus 配置
  * </p>
  *
- * @author
- * @since 2022/8/23
+ * @author sqx
  */
 @Configuration
 @MapperScan("com.shanjupay.**.mapper")

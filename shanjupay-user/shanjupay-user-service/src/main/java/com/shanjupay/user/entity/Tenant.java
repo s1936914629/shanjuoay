@@ -9,12 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * <p>
- * 
- * </p>
- *
- *
- * @since 2019-07-15
+ * @author sqx
  */
 @Data
 @TableName("tenant")
@@ -25,7 +20,7 @@ public class Tenant implements Serializable {
     /**
      * 主键
      */
-    @TableId(value="ID",type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

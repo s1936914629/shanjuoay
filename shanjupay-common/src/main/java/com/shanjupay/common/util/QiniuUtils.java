@@ -1,9 +1,5 @@
 package com.shanjupay.common.util;
 
-
-import com.google.gson.Gson;
-import com.qiniu.common.QiniuException;
-import com.qiniu.http.Response;
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
@@ -23,26 +19,21 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.UUID;
 
-/**
- * 七牛云测试工具类
- *
- * @auther: sqx
- * @Date: 2022/8/21
- */
+/**七牛云测试工具类
+ * @author sqx
+ **/
 public class QiniuUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(QiniuUtils.class);
-
     /**
-     * 文件上传的工具方法
-     *
+     *  文件上传的工具方法
      * @param accessKey
      * @param secretKey
      * @param bucket
      * @param bytes
-     * @param fileName  外部传进来，七牛云上的文件名称和此保持一致
+     * @param fileName 外部传进来，七牛云上的文件名称和此保持一致
      */
-    public static void upload2qiniu(String accessKey, String secretKey, String bucket, byte[] bytes, String fileName) throws RuntimeException {
+    public static void  upload2qiniu(String accessKey,String secretKey,String bucket, byte[] bytes,String fileName) throws RuntimeException{
 
         //构造一个带指定 Region 对象的配置类，指定存储区域，和存储空间选择的区域一致
         Configuration cfg = new Configuration(Region.huanan());
@@ -52,6 +43,7 @@ public class QiniuUtils {
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = fileName;
         try {
+
             //认证
             Auth auth = Auth.create(accessKey, secretKey);
             //认证通过后得到token（令牌）
@@ -67,7 +59,7 @@ public class QiniuUtils {
             } catch (QiniuException ex) {
                 Response r = ex.response;
                 System.err.println(r.toString());
-                LOGGER.error("上传文件到七牛：{}", ex.getMessage());
+                LOGGER.error("上传文件到七牛：{}",ex.getMessage());
                 try {
                     LOGGER.error(r.bodyString());
                 } catch (QiniuException ex2) {
@@ -76,23 +68,22 @@ public class QiniuUtils {
                 throw new RuntimeException(r.bodyString());
             }
         } catch (Exception ex) {
-            LOGGER.error("上传文件到七牛：{}", ex.getMessage());
+            LOGGER.error("上传文件到七牛：{}",ex.getMessage());
             throw new RuntimeException(ex.getMessage());
         }
     }
-
     //测试文件上传
-    private static void testUpload() {
+    private static void testUpload(){
         //构造一个带指定 Region 对象的配置类，指定存储区域，和存储空间选择的区域一致
         Configuration cfg = new Configuration(Region.huanan());
-        //...其他参数参考类注释
+//...其他参数参考类注释
         UploadManager uploadManager = new UploadManager(cfg);
-        //...生成上传凭证，然后准备上传
+//...生成上传凭证，然后准备上传
         String accessKey = "vG3krn6ZU9j_KCJEsOW-76A3RxEbgCkN6tkTDOf_";
         String secretKey = "p04hR8a1151UXAb0K3GpYznPxAGuSj_9LbegmJuS";
         String bucket = "shanjupay-m1";
-        //默认不指定key的情况下，以文件内容的hash值作为文件名
-        String key = UUID.randomUUID().toString() + ".png";
+//默认不指定key的情况下，以文件内容的hash值作为文件名
+        String key = UUID.randomUUID().toString()+".png";
         FileInputStream fileInputStream = null;
         try {
 
@@ -100,7 +91,7 @@ public class QiniuUtils {
             fileInputStream = new FileInputStream(new File(filePath));
             //得到本地文件的字节数组
             byte[] bytes = IOUtils.toByteArray(fileInputStream);
-            //            byte[] uploadBytes = "hello qiniu cloud".getBytes("utf-8");
+//            byte[] uploadBytes = "hello qiniu cloud".getBytes("utf-8");
             //认证
             Auth auth = Auth.create(accessKey, secretKey);
             //认证通过后得到token（令牌）

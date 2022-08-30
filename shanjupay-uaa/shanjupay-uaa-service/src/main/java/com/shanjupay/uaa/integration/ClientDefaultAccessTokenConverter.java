@@ -16,11 +16,13 @@ import java.util.*;
 
 /**
  * 令牌格式json与spring OAuth2Authentication的转换   增加jwt对client Authorities的支持
+ *
+ * @author sqx
  */
 public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
 
+    public static final String CLIENT_AUTHORITIES = "client_authorities";
     private UserAuthenticationConverter userTokenConverter = new DefaultUserAuthenticationConverter();
-
     private boolean includeGrantType;
 
     /**
@@ -41,8 +43,6 @@ public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
         this.includeGrantType = includeGrantType;
     }
 
-    public static final String CLIENT_AUTHORITIES = "client_authorities";
-
     public Map<String, ?> convertAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
         Map<String, Object> response = new HashMap<String, Object>();
         OAuth2Request clientToken = authentication.getOAuth2Request();
@@ -51,19 +51,19 @@ public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
             response.putAll(userTokenConverter.convertUserAuthentication(authentication.getUserAuthentication()));
 
             ///增加对client Authorities支持
-            if(authentication.getOAuth2Request().getAuthorities() != null && !authentication.getOAuth2Request().getAuthorities().isEmpty()){
+            if (authentication.getOAuth2Request().getAuthorities() != null && !authentication.getOAuth2Request().getAuthorities().isEmpty()) {
                 response.put(CLIENT_AUTHORITIES,
                         AuthorityUtils.authorityListToSet(authentication.getOAuth2Request().getAuthorities()));
             }
             ///结束增加对client Authorities支持
         } else {
-            if (clientToken.getAuthorities()!=null && !clientToken.getAuthorities().isEmpty()) {
+            if (clientToken.getAuthorities() != null && !clientToken.getAuthorities().isEmpty()) {
                 response.put(UserAuthenticationConverter.AUTHORITIES,
                         AuthorityUtils.authorityListToSet(clientToken.getAuthorities()));
             }
         }
 
-        if (token.getScope()!=null) {
+        if (token.getScope() != null) {
             response.put(SCOPE, token.getScope());
         }
         if (token.getAdditionalInformation().containsKey(JTI)) {
@@ -74,7 +74,7 @@ public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
             response.put(EXP, token.getExpiration().getTime() / 1000);
         }
 
-        if (includeGrantType && authentication.getOAuth2Request().getGrantType()!=null) {
+        if (includeGrantType && authentication.getOAuth2Request().getGrantType() != null) {
             response.put(GRANT_TYPE, authentication.getOAuth2Request().getGrantType());
         }
 
@@ -119,17 +119,17 @@ public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
                 : Collections.<String>emptySet());
 
         Collection<? extends GrantedAuthority> authorities = null;
-        if (user==null && map.containsKey(AUTHORITIES)) {
+        if (user == null && map.containsKey(AUTHORITIES)) {
             @SuppressWarnings("unchecked")
-            String[] roles = ((Collection<String>)map.get(AUTHORITIES)).toArray(new String[0]);
+            String[] roles = ((Collection<String>) map.get(AUTHORITIES)).toArray(new String[0]);
             authorities = AuthorityUtils.createAuthorityList(roles);
         }
         ///增加对client Authorities支持
-        if(user != null && map.containsKey(CLIENT_AUTHORITIES)){
-            String[] clentRoles = ((Collection<String>)map.get(CLIENT_AUTHORITIES)).toArray(new String[0]);
+        if (user != null && map.containsKey(CLIENT_AUTHORITIES)) {
+            String[] clentRoles = ((Collection<String>) map.get(CLIENT_AUTHORITIES)).toArray(new String[0]);
             authorities = AuthorityUtils.createAuthorityList(clentRoles);
             ///增加额外属性
-            parameters.put("mobile",(String)map.get("mobile"));
+            parameters.put("mobile", (String) map.get("mobile"));
             parameters.put("payload", JSON.toJSONString(map.get("payload")));
             ///结束增加额外属性
         }
@@ -148,7 +148,7 @@ public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
             Collection<String> result = (Collection<String>) auds;
             return result;
         }
-        return Collections.singleton((String)auds);
+        return Collections.singleton((String) auds);
     }
 
     private Set<String> extractScope(Map<String, ?> map) {
@@ -160,7 +160,7 @@ public class ClientDefaultAccessTokenConverter implements AccessTokenConverter {
             } else if (Collection.class.isAssignableFrom(scopeObj.getClass())) {
                 @SuppressWarnings("unchecked")
                 Collection<String> scopeColl = (Collection<String>) scopeObj;
-                scope = new LinkedHashSet<String>(scopeColl);	// Preserve ordering
+                scope = new LinkedHashSet<String>(scopeColl);    // Preserve ordering
             }
         }
         return scope;

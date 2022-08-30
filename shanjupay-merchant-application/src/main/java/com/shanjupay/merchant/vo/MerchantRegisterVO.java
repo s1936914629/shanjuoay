@@ -8,10 +8,9 @@ import java.io.Serializable;
 
 /**
  * 用于接收前端提交的数据
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
+ *
+ * @author sqx
+ **/
 @ApiModel(value = "MerchantRegisterVO", description = "商户注册信息")
 @Data
 public class MerchantRegisterVO implements Serializable {

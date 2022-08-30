@@ -13,9 +13,7 @@ import java.util.regex.Pattern;
 
 
 public abstract class StringUtils {
-    /**
-     * An empty immutable <code>String</code> array.
-     */
+
     public static final String[] EMPTY_STRING_ARRAY = new String[0];
 	private static final Pattern PATTERN_CIDR = Pattern.compile("^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})/(\\d{1,2})$");
 	private static final String QUOT = "&quot;";

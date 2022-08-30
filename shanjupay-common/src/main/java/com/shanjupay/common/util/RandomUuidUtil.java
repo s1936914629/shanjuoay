@@ -5,8 +5,7 @@ import java.util.UUID;
 /**
  * 随机UUID工具
  * 效果：b5e8863950d649ffa5a372dd0e951416
- * @author scq
- *
+ * @author sqx
  */
 public class RandomUuidUtil {
 

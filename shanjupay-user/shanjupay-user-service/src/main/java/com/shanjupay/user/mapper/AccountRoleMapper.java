@@ -15,22 +15,22 @@ import java.util.List;
  * 账号-角色关系 Mapper 接口
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Repository
 public interface AccountRoleMapper extends BaseMapper<AccountRole> {
 
     @Delete("delete from account_role r where  r.TENANT_ID=#{tenantId} and a.username=#{username} ")
-    void deleteByUsernameInTenant(@Param("tenantId")Long tenantId,@Param("username") String username);
+    void deleteByUsernameInTenant(@Param("tenantId") Long tenantId, @Param("username") String username);
 
     /**
      * 获取用户在多租户下的角色
+     *
      * @param username
      * @param ids
      * @return
      */
-    @Select("<script> "  +
+    @Select("<script> " +
             "SELECT r.id FROM " +
             "account_role ar, authorization_role r " +
             "WHERE r.`CODE` = ar.ROLE_CODE " +
@@ -42,6 +42,7 @@ public interface AccountRoleMapper extends BaseMapper<AccountRole> {
 
     /**
      * 绑定角色
+     *
      * @param username
      * @param tenantId
      * @param roleList
@@ -51,5 +52,5 @@ public interface AccountRoleMapper extends BaseMapper<AccountRole> {
             "<foreach collection='roleList' item='item' separator=','>(#{username},#{item},#{tenantId})</foreach> " +
             "</script>")
     //@Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "ID")
-    void insertAccountRole(@Param("username")String username,@Param("tenantId") Long tenantId,@Param("roleList") List<String> roleList);
+    void insertAccountRole(@Param("username") String username, @Param("tenantId") Long tenantId, @Param("roleList") List<String> roleList);
 }

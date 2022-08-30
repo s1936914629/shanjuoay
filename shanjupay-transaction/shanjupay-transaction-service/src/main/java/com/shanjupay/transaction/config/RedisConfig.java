@@ -7,9 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
- * @auther: sqx
- * @Date: 2022/8/29
- */
+ * @author sqx
+ **/
 @Configuration
 public class RedisConfig {
 

@@ -24,7 +24,6 @@ import java.util.UUID;
 /**
  * @author sqx
  **/
-
 @RestController
 @Api(value="商户平台应用接口",tags = "商户平台应用接口",description = "商户平台应用接口")
 public class MerchantController {
@@ -44,6 +43,14 @@ public class MerchantController {
 
         MerchantDTO merchantDTO = merchantService.queryMerchantById(id);
         return merchantDTO;
+    }
+
+    @ApiOperation("获取登录用户的商户信息")
+    @GetMapping(value="/my/merchants")
+    public MerchantDTO getMyMerchantInfo(){
+        //从token中获取商户id
+        Long merchantId = SecurityUtil.getMerchantId();
+        return merchantService.queryMerchantById(merchantId);
     }
     @ApiOperation("获取手机验证码")
     @GetMapping("/sms")
@@ -73,10 +80,10 @@ public class MerchantController {
         //校验验证码
         smsService.checkVerifiyCode(merchantRegisterVO.getVerifiykey(),merchantRegisterVO.getVerifiyCode());
         //调用dubbo服务接口
-        //        MerchantDTO merchantDTO = new MerchantDTO();
+//        MerchantDTO merchantDTO = new MerchantDTO();
         //向dto写入商户注册的信息
-        //        merchantDTO.setMobile(merchantRegisterVO.getMobile());
-        //        merchantDTO.setUsername(merchantRegisterVO.getUsername());
+//        merchantDTO.setMobile(merchantRegisterVO.getMobile());
+//        merchantDTO.setUsername(merchantRegisterVO.getUsername());
         //...
         //使用MapStruct转换对象
         MerchantDTO merchantDTO = MerchantRegisterConvert.INSTANCE.vo2dto(merchantRegisterVO);

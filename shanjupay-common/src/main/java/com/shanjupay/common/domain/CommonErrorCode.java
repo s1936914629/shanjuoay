@@ -1,12 +1,8 @@
-
 package com.shanjupay.common.domain;
 
 
 /**
- * 异常编码 0成功、-1熔断、 -2 标准参数校验不通过 -3会话超时
- * 前两位:服务标识
- * 中间两位:模块标识
- * 后两位:异常标识
+ * 异常编码
  */
 public enum CommonErrorCode implements ErrorCode {
 
@@ -73,16 +69,17 @@ public enum CommonErrorCode implements ErrorCode {
 
 	////////////////////////////////////支付渠道代理服务异常编码400//////////////////
 	E_400001(400001,"微信确认支付失败"),
+	E_400002(400002,"支付宝确认支付失败"),
 
 	////////////////////////////////////运营服务异常编码500//////////////////
 
 	////////////////////////////////////特殊异常编码/////////////////////////////////////
-	E_999991(999991,"调用微服务-授权服务 被熔断"),
-	E_999992(999992,"调用微服务-用户服务 被熔断"),
-	E_999993(999993,"调用微服务-资源服务 被熔断"),
-	E_999994(999994,"调用微服务-同步服务 被熔断"),
+    E_999991(999991,"调用微服务-授权服务 被熔断"),
+    E_999992(999992,"调用微服务-用户服务 被熔断"),
+    E_999993(999993,"调用微服务-资源服务 被熔断"),
+    E_999994(999994,"调用微服务-同步服务 被熔断"),
 
-	E_999910(999910,"调用微服务-没有传tenantId租户Id"),
+    E_999910(999910,"调用微服务-没有传tenantId租户Id"),
 	E_999911(999911,"调用微服务-没有json-token令牌"),
 	E_999912(999912,"调用微服务-json-token令牌解析有误"),
 	E_999913(999913,"调用微服务-json-token令牌有误-没有当前租户信息"),
@@ -114,12 +111,11 @@ public enum CommonErrorCode implements ErrorCode {
 
 
 	public static CommonErrorCode setErrorCode(int code) {
-		for (CommonErrorCode errorCode : CommonErrorCode.values()) {
-			if (errorCode.getCode()==code) {
-				return errorCode;
-			}
-		}
-		return null;
+       for (CommonErrorCode errorCode : CommonErrorCode.values()) {
+           if (errorCode.getCode()==code) {
+               return errorCode;
+           }
+       }
+	       return null;
 	}
 }
-

@@ -17,9 +17,8 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * @auther: sqx
- * @Date: 2022/8/21
- */
+ * @author sqx
+ **/
 @org.apache.dubbo.config.annotation.Service
 public class AppServiceImpl implements AppService {
 
@@ -98,6 +97,21 @@ public class AppServiceImpl implements AppService {
     public AppDTO getAppById(String appId) throws BusinessException {
         App app = appMapper.selectOne(new LambdaQueryWrapper<App>().eq(App::getAppId, appId));
         return AppCovert.INSTANCE.entity2dto(app);
+    }
+
+    /**
+     * 校验应用是否属于商户
+     *
+     * @param appId
+     * @param merchantId
+     * @return true存在，false不存在
+     */
+    @Override
+    public Boolean queryAppInMerchant(String appId, Long merchantId) {
+        Integer count = appMapper.selectCount(new LambdaQueryWrapper<App>().eq(App::getAppId, appId)
+                .eq(App::getMerchantId, merchantId));
+
+        return count>0;
     }
 
     //判断应用名称是否存在

@@ -19,8 +19,7 @@ import java.util.List;
  * 菜单 Mapper 接口
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Repository
 public interface ResourceMenuMapper extends BaseMapper<ResourceMenu> {
@@ -28,17 +27,17 @@ public interface ResourceMenuMapper extends BaseMapper<ResourceMenu> {
     @Select("select count(*) from resource_menu m where m.APPLICATION_CODE=#{applicationCode}")
     int selectResourceByapplicationCode(@Param("applicationCode") String applicationCode);
 
-   /* @Select("<script>" +
-            "select a.`NAME`,a.`CODE`,m.* from resource_menu m " +
-            "LEFT JOIN resource_application a ON a.`CODE`=m.APPLICATION_CODE " +
-            "where APPLICATION_CODE=#{applicationCode} " +
-            "and PRIVILEGE_CODE in <foreach collection='privilegeCodes' item='item' open='(' separator=',' close=')'>#{item}</foreach> " +
-            "</script>")
-    List<ResourceDTO> selectResourceByPrivilegeInApp(@Param("privilegeCodes") List<String> privilegeCodes, @Param("applicationCode") String applicationCode);
-*/
+    /* @Select("<script>" +
+             "select a.`NAME`,a.`CODE`,m.* from resource_menu m " +
+             "LEFT JOIN resource_application a ON a.`CODE`=m.APPLICATION_CODE " +
+             "where APPLICATION_CODE=#{applicationCode} " +
+             "and PRIVILEGE_CODE in <foreach collection='privilegeCodes' item='item' open='(' separator=',' close=')'>#{item}</foreach> " +
+             "</script>")
+     List<ResourceDTO> selectResourceByPrivilegeInApp(@Param("privilegeCodes") List<String> privilegeCodes, @Param("applicationCode") String applicationCode);
+ */
     @Select("<script>"
-            +"select * from resource_menu m "
-            +"LEFT JOIN resource_application a ON a.`CODE`=m.APPLICATION_CODE "
+            + "select * from resource_menu m "
+            + "LEFT JOIN resource_application a ON a.`CODE`=m.APPLICATION_CODE "
             + "<where>"
             + "<if test=\"params.applicationCode != null and params.applicationCode!=''\"> "
             + "and a.`CODE`= #{params.applicationCode} "
@@ -49,7 +48,7 @@ public interface ResourceMenuMapper extends BaseMapper<ResourceMenu> {
             + "<if test=\"params.status != null and params.status!=''\"> "
             + "and m.STATUS= #{params.status} "
             + "</if>"
-            +"</where>" +
+            + "</where>" +
             "</script>")
     List<MenuDTO> selectByPage(@Param("page") Page<MenuDTO> page, @Param("params") MenuQueryDTO params);
 

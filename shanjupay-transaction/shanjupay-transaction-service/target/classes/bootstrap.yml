@@ -14,12 +14,12 @@ spring:
     nacos:
       discovery:
         server-addr: ${nacos.server.addr}
-        namespace: 70955fb0-33e3-4975-a1ac-8a00d44e995c
+        namespace: f5eec3c1-4f05-40cd-964a-c8d44f342ab4
         cluster-name: DEFAULT
       config:
         server-addr: ${nacos.server.addr} # 配置中心地址
         file-extension: yaml
-        namespace: 70955fb0-33e3-4975-a1ac-8a00d44e995c #2ed00aaa-b760-4171-baa9-83d92e509a41 # 默认开发环境郑州区 命令行注入
+        namespace: f5eec3c1-4f05-40cd-964a-c8d44f342ab4 #2ed00aaa-b760-4171-baa9-83d92e509a41 # 默认开发环境郑州区 命令行注入
         group: SHANJUPAY_GROUP # 聚合支付业务组
         ext-config:
           -
@@ -37,7 +37,13 @@ spring:
           - refresh: true
             data-id: spring-boot-redis.yaml # redis配置
             group: COMMON_GROUP # 通用配置组
-
+          - refresh: true
+            data-id: spring-boot-freemarker.yaml # spring boot freemarker配置
+            group: COMMON_GROUP # 通用配置组
+          -
+            refresh: true
+            data-id: spring-boot-starter-rocketmq.yaml # rocketmq配置
+            group: COMMON_GROUP # 通用配置组
 dubbo:
   scan:
     # dubbo 服务扫描基准包

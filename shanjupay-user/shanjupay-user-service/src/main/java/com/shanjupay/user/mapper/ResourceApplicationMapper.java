@@ -16,19 +16,18 @@ import java.util.List;
  * 应用信息 Mapper 接口
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Repository
 public interface ResourceApplicationMapper extends BaseMapper<ResourceApplication> {
 
     @Select("<script>"
-            +"select * from resource_application a "
+            + "select * from resource_application a "
             + "<where>"
             + "<if test=\"query.name != null and query.name!=''\"> "
             + "and a.NAME like CONCAT('%',#{query.name},'%') "
             + "</if>"
-            +"</where>" +
+            + "</where>" +
             "</script>")
     List<ApplicationDTO> selectAppByPage(@Param("page") Page<ApplicationDTO> page, @Param("query") ApplicationQueryParams query);
 }

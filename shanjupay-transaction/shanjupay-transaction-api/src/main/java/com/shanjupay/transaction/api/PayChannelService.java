@@ -8,10 +8,7 @@ import com.shanjupay.transaction.api.dto.PlatformChannelDTO;
 import java.util.List;
 
 /**
- * 支付渠道服务 管理平台支付渠道，原始支付渠道，以及相关配置
- *
- * @auther: sqx
- * @Date: 2022/8/23
+ * @author sqx
  */
 public interface PayChannelService {
     /**
@@ -64,7 +61,7 @@ public interface PayChannelService {
 
     /**
      * 根据应用、服务类型和支付渠道的代码查询该支付渠道的参数配置信息
-     * @param appId 应用id
+     * @param appId应用id
      * @param platformChannel 服务类型code
      * @param payChannel  支付渠道代码
      * @return

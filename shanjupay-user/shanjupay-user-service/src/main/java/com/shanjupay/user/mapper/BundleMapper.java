@@ -8,11 +8,10 @@ import org.springframework.stereotype.Repository;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Repository
 public interface BundleMapper extends BaseMapper<Bundle> {

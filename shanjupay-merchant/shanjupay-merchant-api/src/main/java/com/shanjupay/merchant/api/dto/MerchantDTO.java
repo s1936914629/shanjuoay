@@ -6,9 +6,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * @author sqx
- **/
 @Data
 @ApiModel(value="MerchantDTO", description="")
 public class MerchantDTO implements Serializable {
@@ -45,6 +42,10 @@ public class MerchantDTO implements Serializable {
     @ApiModelProperty(value = "联系人手机号(关联统一账号)")
     private String mobile;
 
+    @ApiModelProperty(value = "用户密码")
+    private String password;
+
+
     @ApiModelProperty(value = "联系人地址")
     private String contactsAddress;
 
@@ -56,4 +57,3 @@ public class MerchantDTO implements Serializable {
 
 
 }
-

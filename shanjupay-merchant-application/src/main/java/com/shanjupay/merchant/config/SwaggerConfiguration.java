@@ -13,8 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author Administrator
- * @version 1.0
+ * @author sqx
  **/
 @Configuration
 @ConditionalOnProperty(prefix = "swagger",value = {"enable"},havingValue = "true")

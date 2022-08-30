@@ -13,8 +13,7 @@ import java.io.Serializable;
  * 账号-角色关系
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Data
 @TableName("account_role")
@@ -25,9 +24,9 @@ public class AccountRole implements Serializable {
     /**
      * 主键
      */
-//    @TableId("ID")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @TableId(value="ID",type = IdType.AUTO)
+    //    @TableId("ID")
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

@@ -13,8 +13,7 @@ import java.io.Serializable;
  * 角色信息
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Data
 @TableName("authorization_role")
@@ -27,7 +26,7 @@ public class AuthorizationRole implements Serializable {
      */
     //@TableId("ID")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @TableId(value="ID",type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

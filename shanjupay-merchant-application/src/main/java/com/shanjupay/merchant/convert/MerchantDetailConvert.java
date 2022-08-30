@@ -7,8 +7,8 @@ import org.mapstruct.factory.Mappers;
 
 /**
  * 将商户资质申请vo和dto进行转换
- * @auther: sqx
- * @Date: 2022/8/21
+ *
+ * @author sqx
  */
 @Mapper
 public interface MerchantDetailConvert {
@@ -17,8 +17,8 @@ public interface MerchantDetailConvert {
 
     //将dto转成vo
     MerchantDetailVO dto2vo(MerchantDTO merchantDTO);
+
     //将vo转成dto
     MerchantDTO vo2dto(MerchantDetailVO merchantDetailVO);
 
 }
-

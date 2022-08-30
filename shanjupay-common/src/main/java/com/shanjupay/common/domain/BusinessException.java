@@ -1,11 +1,9 @@
 package com.shanjupay.common.domain;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
+/**
  * 自定义的异常类型
- */
-
+ * @author sqx
+ **/
 public class BusinessException extends RuntimeException {
 
     private ErrorCode errorCode;
@@ -26,4 +24,3 @@ public class BusinessException extends RuntimeException {
         return errorCode;
     }
 }
-

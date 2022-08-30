@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 
 /**
  * 订单详细信息
+ *
+ * @author sqx
  */
 @Data
 public class OrderResultDTO implements Serializable {

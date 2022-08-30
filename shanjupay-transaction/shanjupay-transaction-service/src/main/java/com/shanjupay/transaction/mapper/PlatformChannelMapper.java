@@ -10,17 +10,17 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author sqx
- * @since 2022/08/26
  */
 @Repository
 public interface PlatformChannelMapper extends BaseMapper<PlatformChannel> {
 
     /**
      * 根据服务类型code查询对应的支付渠道
+     *
      * @param platformChannelCode
      * @return
      */
@@ -35,4 +35,3 @@ public interface PlatformChannelMapper extends BaseMapper<PlatformChannel> {
             "  AND pla.CHANNEL_CODE = #{platformChannelCode}  ")
     List<PayChannelDTO> selectPayChannelByPlatformChannel(String platformChannelCode);
 }
-

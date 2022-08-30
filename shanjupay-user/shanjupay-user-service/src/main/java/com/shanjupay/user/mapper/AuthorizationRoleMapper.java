@@ -14,8 +14,7 @@ import java.util.List;
  * 角色信息 Mapper 接口
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Repository
 public interface AuthorizationRoleMapper extends BaseMapper<AuthorizationRole> {
@@ -25,6 +24,7 @@ public interface AuthorizationRoleMapper extends BaseMapper<AuthorizationRole> {
 
     /**
      * 某个角色的权限
+     *
      * @param id
      * @return
      */
@@ -32,10 +32,11 @@ public interface AuthorizationRoleMapper extends BaseMapper<AuthorizationRole> {
             "\tLEFT JOIN authorization_role_privilege rp on rp.PRIVILEGE_ID = p.ID\n" +
             "\tLEFT JOIN authorization_role r on rp.ROLE_ID = r.ID\n" +
             "\twhere r.ID=#{id}")
-    List<String>  selectPrivilegeByRole(@Param("id") Long id);
+    List<String> selectPrivilegeByRole(@Param("id") Long id);
 
     /**
      * 在租户下创建角色
+     *
      * @param tenantId
      * @param roles
      */
@@ -43,15 +44,16 @@ public interface AuthorizationRoleMapper extends BaseMapper<AuthorizationRole> {
             "INSERT INTO authorization_role(NAME,CODE,TENANT_ID) VALUES " +
             "<foreach collection='roles' item='item'  separator=','>(#{item.name},#{item.code},#{tenantId})</foreach> " +
             "</script>")
-    @Options(useGeneratedKeys = true,keyProperty = "roles.id")
-    void createRoles(@Param("tenantId") Long tenantId,@Param("roles") List<AuthorizationRole> roles);
+    @Options(useGeneratedKeys = true, keyProperty = "roles.id")
+    void createRoles(@Param("tenantId") Long tenantId, @Param("roles") List<AuthorizationRole> roles);
 
     /**
      * 判断某租户下角色code是否存在
+     *
      * @param tenantId
      * @param roleCode
      * @return
      */
     @Select("select count(*) from authorization_role r where r.TENANT_ID=#{tenantId} and r.`CODE` =#{roleCode}")
-    int selectRoleCodeInTenant(@Param("tenantId") Long tenantId,@Param("roleCode") String roleCode);
+    int selectRoleCodeInTenant(@Param("tenantId") Long tenantId, @Param("roleCode") String roleCode);
 }

@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Spring servlet Context的配置
+ *
+ * @author sqx
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {

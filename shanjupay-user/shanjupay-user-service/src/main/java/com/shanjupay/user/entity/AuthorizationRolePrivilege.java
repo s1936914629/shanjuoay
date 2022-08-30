@@ -13,8 +13,7 @@ import java.io.Serializable;
  * 角色-权限关系
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Data
 @TableName("authorization_role_privilege")
@@ -27,7 +26,7 @@ public class AuthorizationRolePrivilege implements Serializable {
      */
     //@TableId("ID")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @TableId(value="ID",type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

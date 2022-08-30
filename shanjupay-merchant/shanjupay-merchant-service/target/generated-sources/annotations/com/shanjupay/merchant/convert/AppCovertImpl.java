@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-08-23T20:12:34+0800",
+    date = "2022-08-30T18:04:40+0800",
     comments = "version: 1.3.0.Final, compiler: javac, environment: Java 1.8.0_332 (Amazon.com Inc.)"
 )
 public class AppCovertImpl implements AppCovert {
@@ -21,7 +21,6 @@ public class AppCovertImpl implements AppCovert {
 
         AppDTO appDTO = new AppDTO();
 
-        appDTO.setId( entity.getId() );
         appDTO.setAppId( entity.getAppId() );
         appDTO.setAppName( entity.getAppName() );
         appDTO.setMerchantId( entity.getMerchantId() );
@@ -39,7 +38,6 @@ public class AppCovertImpl implements AppCovert {
 
         App app = new App();
 
-        app.setId( dto.getId() );
         app.setAppId( dto.getAppId() );
         app.setAppName( dto.getAppName() );
         app.setMerchantId( dto.getMerchantId() );

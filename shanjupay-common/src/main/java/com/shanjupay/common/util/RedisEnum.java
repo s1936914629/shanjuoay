@@ -1,9 +1,5 @@
 package com.shanjupay.common.util;
 
-/**
- * @auther: sqx
- * @Date: 2022/8/29
- */
 public enum RedisEnum {
 
     /**

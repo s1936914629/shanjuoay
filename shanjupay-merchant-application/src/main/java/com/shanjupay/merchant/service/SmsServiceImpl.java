@@ -13,11 +13,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
+/**
+ * @author sqx
+ **/
 @org.springframework.stereotype.Service  //实例为一个bean
 @Slf4j
 public class SmsServiceImpl implements SmsService{
@@ -94,7 +92,7 @@ public class SmsServiceImpl implements SmsService{
         }catch (Exception e){
             e.printStackTrace();
             throw new BusinessException(CommonErrorCode.E_100102);
-            //            throw new RuntimeException("校验验证码失败");
+//            throw new RuntimeException("校验验证码失败");
 
         }
         if(bodyMap == null || bodyMap.get("result") == null || !(Boolean) bodyMap.get("result")){
@@ -102,4 +100,3 @@ public class SmsServiceImpl implements SmsService{
         }
     }
 }
-

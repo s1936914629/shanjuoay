@@ -8,9 +8,8 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 /**
- * @auther: sqx
- * @Date: 2022/8/21
- */
+ * @author sqx
+ **/
 @Mapper
 public interface AppCovert {
 

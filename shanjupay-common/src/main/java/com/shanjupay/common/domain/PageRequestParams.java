@@ -2,16 +2,16 @@ package com.shanjupay.common.domain;
 
 
 public class PageRequestParams {
-
+	
 	private long startRow;
-
+	
 	private long limit;
-
+	
 	private PageRequestParams(Long startRow, Long limit){
 		this.startRow = startRow;
 		this.limit = limit;
 	}
-
+	
 	public static PageRequestParams of(Integer pageNo, Integer pageSize){
 		Long startRow = Long.valueOf((pageNo - 1) * pageSize);
 		Long limit = Long.valueOf((pageSize));

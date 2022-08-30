@@ -3,15 +3,12 @@ package com.shanjupay.merchant.service;
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.common.domain.CommonErrorCode;
 import com.shanjupay.common.util.QiniuUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
- * @auther: sqx
- * @Date: 2022/8/21
- */
-
+ * @author sqx
+ **/
 @Service
 public class FileServiceImpl implements FileService{
 

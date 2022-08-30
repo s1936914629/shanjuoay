@@ -3,10 +3,8 @@ package com.shanjupay.merchant.service;
 import com.shanjupay.common.domain.BusinessException;
 
 /**
- * 文件服务
- * @auther: sqx
- * @Date: 2022/8/21
- */
+ * @author sqx
+ **/
 public interface FileService {
 
     /**

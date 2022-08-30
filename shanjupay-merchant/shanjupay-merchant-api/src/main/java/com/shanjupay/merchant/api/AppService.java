@@ -2,15 +2,13 @@ package com.shanjupay.merchant.api;
 
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.merchant.api.dto.AppDTO;
-import com.shanjupay.merchant.api.dto.MerchantDTO;
 
 import java.util.List;
 
 /**
  * 应用管理相关的接口
  *
- * @auther: sqx
- * @Date: 2022/8/21
+ * @author sqx
  */
 public interface AppService {
 
@@ -41,5 +39,15 @@ public interface AppService {
      * @throws BusinessException
      */
     AppDTO getAppById(String appId) throws BusinessException;
+
+
+    /**
+     * 校验应用是否属于商户
+     *
+     * @param appId
+     * @param merchantId
+     * @return
+     */
+    Boolean queryAppInMerchant(String appId, Long merchantId);
 
 }

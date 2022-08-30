@@ -9,12 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * <p>
- * 
- * </p>
- *
- *
- * @since 2019-07-15
+ * @author sqx
  */
 @Data
 @TableName("tenant_account")
@@ -22,7 +17,7 @@ public class TenantAccount implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value="ID",type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

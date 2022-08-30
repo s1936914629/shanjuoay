@@ -13,19 +13,18 @@ import java.io.Serializable;
  * 权限组
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Data
 @TableName("authorization_privilege_group")
-public class AuthorizationPrivilegeGroup  implements Serializable {
+public class AuthorizationPrivilegeGroup implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键
      */
-    @TableId(value="ID",type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

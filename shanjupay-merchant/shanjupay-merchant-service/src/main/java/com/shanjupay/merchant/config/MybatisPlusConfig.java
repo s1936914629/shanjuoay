@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author sqx
- * @version 1.0
  **/
 @Configuration
 @MapperScan("com.shanjupay.**.mapper")

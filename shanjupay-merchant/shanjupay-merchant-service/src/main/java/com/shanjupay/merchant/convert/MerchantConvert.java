@@ -1,12 +1,5 @@
 package com.shanjupay.merchant.convert;
 
-/**
- * 定义dto和entity之间的转换规则
- *
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
 import com.shanjupay.merchant.api.dto.MerchantDTO;
 import com.shanjupay.merchant.entity.Merchant;
 import org.mapstruct.Mapper;
@@ -15,6 +8,11 @@ import org.mapstruct.factory.Mappers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 定义dto和entity之间的转换规则
+ *
+ * @author sqx
+ */
 @Mapper //对象属性的映射
 public interface MerchantConvert {
 

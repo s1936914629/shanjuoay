@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * 角色信息
+ *
+ * @author sqx
  */
 @ApiModel(value = "RoleDTO", description = "角色信息")
 @Data
@@ -41,7 +43,7 @@ public class RoleDTO implements Serializable {
     private Long tenantId;
 
     /**
-     *  角色包含权限列表
+     * 角色包含权限列表
      */
 
     @ApiModelProperty("角色包含权限列表")

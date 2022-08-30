@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
  *  Mapper 接口
  * </p>
  *
- * @author author
- * @since 2022-08-17
+ * @author sqx
  */
 @Repository
 public interface StaffMapper extends BaseMapper<Staff> {

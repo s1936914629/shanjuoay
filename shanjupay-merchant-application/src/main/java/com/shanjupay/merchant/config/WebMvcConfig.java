@@ -5,8 +5,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * @author Administrator
- * @version 1.0
+ * @author sqx
  **/
 @Component
 public class WebMvcConfig implements WebMvcConfigurer {

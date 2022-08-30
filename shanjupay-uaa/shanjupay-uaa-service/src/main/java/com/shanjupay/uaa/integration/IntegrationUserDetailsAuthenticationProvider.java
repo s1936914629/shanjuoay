@@ -14,10 +14,12 @@ import java.util.Map;
 
 /**
  * 统一用户认证处理，集成了网页(简化模式、授权码模式用户登录)认证  与  password模式认证
+ *
+ * @author sqx
  */
 public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
-    private IntegrationUserDetailsAuthenticationHandler authenticationHandler  = null;
+    private IntegrationUserDetailsAuthenticationHandler authenticationHandler = null;
 
     public IntegrationUserDetailsAuthenticationProvider(IntegrationUserDetailsAuthenticationHandler authenticationHandler) {
         this.authenticationHandler = authenticationHandler;
@@ -44,11 +46,9 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
             return loadedUser;
         } catch (UsernameNotFoundException ex) {
             throw ex;
-        }
-        catch (InternalAuthenticationServiceException ex) {
+        } catch (InternalAuthenticationServiceException ex) {
             throw ex;
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             throw new InternalAuthenticationServiceException(ex.getMessage(), ex);
         }
     }
@@ -65,7 +65,7 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
         }
         String credentials = authentication.getCredentials().toString();
 
-        AuthPrincipal authPrincipal =null;
+        AuthPrincipal authPrincipal = null;
 
         try {
             authPrincipal = JSON.parseObject(username, AuthPrincipal.class);
@@ -74,12 +74,12 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
             throw new BadCredentialsException("username parseObject error");
         }
 
-        if(authentication.getDetails() instanceof Map){
-            Map detailsMap = (Map)authentication.getDetails();
+        if (authentication.getDetails() instanceof Map) {
+            Map detailsMap = (Map) authentication.getDetails();
             authPrincipal.getPayload().putAll(detailsMap);
         }
 
-        return authenticationHandler.authentication(authPrincipal ,credentials);
+        return authenticationHandler.authentication(authPrincipal, credentials);
     }
 
 }

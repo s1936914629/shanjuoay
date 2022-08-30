@@ -17,10 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 全局异常处理器
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
+ * @author sqx
+ **/
 @ControllerAdvice//与@Exceptionhandler配合使用实现全局异常处理
 public class GlobalExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -30,7 +28,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public RestErrorResponse processExcetion( HttpServletRequest request,
-                                              HttpServletResponse response,
+                                               HttpServletResponse response,
                                               Exception e){
         //解析异常信息
         //如果是系统自定义异常，直接取出errCode和errMessage
@@ -52,4 +50,3 @@ public class GlobalExceptionHandler {
 
     }
 }
-

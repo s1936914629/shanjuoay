@@ -12,24 +12,26 @@ import java.util.Properties;
  * <P>
  * Mybatis-Plus 配置
  * </p>
+ *
+ * @author sqx
  */
 @Configuration
 @MapperScan("com.shanjupay.**.mapper")
 public class MybatisPlusConfig {
 
-	/**
-	 * 分页插件，自动识别数据库类型
-	 */
-	@Bean
-	public PaginationInterceptor paginationInterceptor() {
-		return new PaginationInterceptor();
-	}
+    /**
+     * 分页插件，自动识别数据库类型
+     */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
+    }
 
-	/**
-	 * 启用性能分析插件
-	 */
-	@Bean
-	public PerformanceInterceptor performanceInterceptor(){
-		return new PerformanceInterceptor();
-	}
+    /**
+     * 启用性能分析插件
+     */
+    @Bean
+    public PerformanceInterceptor performanceInterceptor() {
+        return new PerformanceInterceptor();
+    }
 }

@@ -14,8 +14,7 @@ import java.util.List;
  * 角色-权限关系 Mapper 接口
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Repository
 public interface AuthorizationRolePrivilegeMapper extends BaseMapper<AuthorizationRolePrivilege> {
@@ -24,6 +23,6 @@ public interface AuthorizationRolePrivilegeMapper extends BaseMapper<Authorizati
             "INSERT INTO authorization_role_privilege(ROLE_ID,PRIVILEGE_ID) VALUES " +
             "<foreach collection='pids' item='item'  separator=','>(#{rid},#{item})</foreach> " +
             "</script>")
-    //@Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "ID")
-    void insertRolePrivilege(@Param("rid") Long rid,@Param("pids") List<Long> pids);
+        //@Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "ID")
+    void insertRolePrivilege(@Param("rid") Long rid, @Param("pids") List<Long> pids);
 }

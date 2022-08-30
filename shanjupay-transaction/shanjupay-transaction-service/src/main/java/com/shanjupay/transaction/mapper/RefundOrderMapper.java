@@ -6,11 +6,10 @@ import org.springframework.stereotype.Repository;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author sqx
- * @since 2022/08/26
  */
 @Repository
 public interface RefundOrderMapper extends BaseMapper<RefundOrder> {

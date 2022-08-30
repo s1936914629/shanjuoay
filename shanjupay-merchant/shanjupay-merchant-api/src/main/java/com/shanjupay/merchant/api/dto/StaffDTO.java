@@ -1,10 +1,5 @@
 package com.shanjupay.merchant.api.dto;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
- */
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -47,5 +42,3 @@ public class StaffDTO implements Serializable {
 
 
 }
-
-

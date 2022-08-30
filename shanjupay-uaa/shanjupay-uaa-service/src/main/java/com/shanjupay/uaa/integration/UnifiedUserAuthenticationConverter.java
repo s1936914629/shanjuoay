@@ -48,10 +48,10 @@ public class UnifiedUserAuthenticationConverter implements UserAuthenticationCon
             response.put(AUTHORITIES, AuthorityUtils.authorityListToSet(authentication.getAuthorities()));
         }
 
-        if(authentication.getPrincipal() instanceof UnifiedUserDetails){
-            UnifiedUserDetails unifiedUserDetails =(UnifiedUserDetails) authentication.getPrincipal();
-            response.put("mobile",unifiedUserDetails.getMobile());
-            response.put("payload",unifiedUserDetails.getPayload());
+        if (authentication.getPrincipal() instanceof UnifiedUserDetails) {
+            UnifiedUserDetails unifiedUserDetails = (UnifiedUserDetails) authentication.getPrincipal();
+            response.put("mobile", unifiedUserDetails.getMobile());
+            response.put("payload", unifiedUserDetails.getPayload());
         }
         return response;
     }
@@ -66,8 +66,8 @@ public class UnifiedUserAuthenticationConverter implements UserAuthenticationCon
                 principal = user;
             }
 
-            UnifiedUserDetails unifiedUserDetails = new UnifiedUserDetails((String)map.get(USERNAME),"N/A",(Map<Long, Object>)map.get("payload"));
-            unifiedUserDetails.setMobile((String)map.get("mobile"));
+            UnifiedUserDetails unifiedUserDetails = new UnifiedUserDetails((String) map.get(USERNAME), "N/A", (Map<Long, Object>) map.get("payload"));
+            unifiedUserDetails.setMobile((String) map.get("mobile"));
 
             return new UsernamePasswordAuthenticationToken(unifiedUserDetails, "N/A", authorities);
         }

@@ -13,23 +13,22 @@ import java.util.List;
 
 /**
  * @author sqx
- * @version 1.0
  **/
 @SpringBootApplication
 public class MerchantApplicationBootstrap {
     public static void main(String[] args) {
-        SpringApplication.run(MerchantApplicationBootstrap.class,args);
+        SpringApplication.run(MerchantApplicationBootstrap.class, args);
     }
 
 
     @Bean
-    RestTemplate restTemplate(){
+    RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate(new OkHttp3ClientHttpRequestFactory());
         //得到消息转换器
         List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
         //指定StringHttpMessageConverter消息转换器的字符集为utf-8
-        messageConverters.set(1,new StringHttpMessageConverter(StandardCharsets.UTF_8));
-        return  restTemplate;
+        messageConverters.set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return restTemplate;
     }
 
 }

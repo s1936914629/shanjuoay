@@ -12,16 +12,19 @@ import java.util.Map;
 
 /**
  * 授权服务：负责 用户-角色关系、角色、权限、等信息维护
- *
+ * <p>
  * 权限组、权限为手工维护
- *
+ * <p>
  * 租户内角色数量、租户内账号数量、应用数量可用套餐限制
+ *
+ * @author sqx
  */
 public interface AuthorizationService {
 
     /**
      * 授权，获取某用户在多个租户下的权限信息
-     * @param username 用户名
+     *
+     * @param username  用户名
      * @param tenantIds 租户id列表
      * @return key为租户id  value为租户下的角色权限信息
      */
@@ -30,6 +33,7 @@ public interface AuthorizationService {
 
     /**
      * 查找某租户下，多个角色的权限信息集合
+     *
      * @param roleCodes
      * @return List<PrivilegeTreeDTO>
      */
@@ -37,6 +41,7 @@ public interface AuthorizationService {
 
     /**
      * 获取权限组下所有权限
+     *
      * @param privilegeGroupId 权限组ID
      * @return
      */
@@ -45,6 +50,7 @@ public interface AuthorizationService {
 
     /**
      * 查找某租户下，多个角色的权限信息集合，并根据权限组组装成为权限树
+     *
      * @param tenantId
      * @param roleCodes 角色编码列表，为null时代表所有权限
      * @return
@@ -52,11 +58,11 @@ public interface AuthorizationService {
     PrivilegeTreeDTO queryPrivilegeTree(Long tenantId, String[] roleCodes) throws BusinessException;
 
 
-
-
     //////////////////////////////////////////////////角色、权限///////////////////////////////////////////////////
+
     /**
      * 创建租户内角色（不包含权限）
+     *
      * @param tenantId
      * @param role
      * @throws BusinessException
@@ -65,6 +71,7 @@ public interface AuthorizationService {
 
     /**
      * 删除租户内角色，如果有账号绑定该角色，禁止删除
+     *
      * @param tenantId
      * @param roleCode
      */
@@ -72,12 +79,14 @@ public interface AuthorizationService {
 
     /**
      * 删除租户内角色
+     *
      * @param id 角色id
      */
     void removeRole(Long id) throws BusinessException;
 
     /**
      * 修改租户内角色(不包含权限)
+     *
      * @param role
      */
     void modifyRole(RoleDTO role) throws BusinessException;
@@ -85,6 +94,7 @@ public interface AuthorizationService {
 
     /**
      * 角色设置权限(清除+设置)
+     *
      * @param tenantId
      * @param roleCode
      * @param privilegeCodes
@@ -93,6 +103,7 @@ public interface AuthorizationService {
 
     /**
      * 查询某租户下角色(不分页，不包含权限)
+     *
      * @param tenantId
      * @return
      */
@@ -100,6 +111,7 @@ public interface AuthorizationService {
 
     /**
      * 根据roleCode获取角色(不包含权限)
+     *
      * @param tenantId
      * @param roleCodes
      * @return
@@ -109,6 +121,7 @@ public interface AuthorizationService {
 
     /**
      * 获取租户内的某个角色信息(包含权限信息)
+     *
      * @param tenantId
      * @param roleCode
      * @return
@@ -118,8 +131,9 @@ public interface AuthorizationService {
 
     /**
      * 绑定角色
-     * @param username 用户名
-     * @param tenantId 租户id
+     *
+     * @param username  用户名
+     * @param tenantId  租户id
      * @param roleCodes 角色列表
      * @return
      */
@@ -127,8 +141,9 @@ public interface AuthorizationService {
 
     /**
      * 解绑角色
-     * @param username 用户名
-     * @param tenantId 租户id
+     *
+     * @param username  用户名
+     * @param tenantId  租户id
      * @param roleCodes 角色列表
      * @return
      */
@@ -136,6 +151,7 @@ public interface AuthorizationService {
 
     /**
      * 分页查询角色
+     *
      * @param roleDTO
      * @param pageNo
      * @param pageSize

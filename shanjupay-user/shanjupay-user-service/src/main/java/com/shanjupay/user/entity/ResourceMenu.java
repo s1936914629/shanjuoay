@@ -13,8 +13,7 @@ import java.io.Serializable;
  * 菜单
  * </p>
  *
- *
- * @since 2019-08-13
+ * @author sqx
  */
 @Data
 @TableName("resource_menu")
@@ -25,7 +24,7 @@ public class ResourceMenu implements Serializable {
     /**
      * 主键
      */
-    @TableId(value="ID",type = IdType.AUTO)
+    @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
     /**

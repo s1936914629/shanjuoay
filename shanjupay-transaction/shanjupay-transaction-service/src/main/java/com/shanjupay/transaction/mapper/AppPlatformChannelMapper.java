@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
  * </p>
  *
  * @author sqx
- * @since 2022/08/26
  */
 @Repository
 public interface AppPlatformChannelMapper extends BaseMapper<AppPlatformChannel> {

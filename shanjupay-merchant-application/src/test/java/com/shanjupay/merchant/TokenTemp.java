@@ -12,9 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * @auther: sqx
- * @Date: 2022/8/21
- */
+ * @author Administrator
+ * @version 1.0
+ **/
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TokenTemp {
@@ -35,4 +35,6 @@ public class TokenTemp {
         String jwt_token = "Bearer " + EncryptUtil.encodeBase64(JSON.toJSONString(token).getBytes());
         System.out.println(jwt_token);
     }
+
+
 }

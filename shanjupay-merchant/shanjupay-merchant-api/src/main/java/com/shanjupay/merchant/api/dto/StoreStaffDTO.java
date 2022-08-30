@@ -6,10 +6,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/*
- * @auther: sqx
- * @Date: 2022/8/20
- */
 @Data
 @ApiModel(value="StoreStaffDTO", description="")
 public class StoreStaffDTO implements Serializable {

@@ -13,11 +13,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/*
- * @auther: sqx
- * @Date: 2022/8/18
- */
+/**
+ * @author Administrator
+ * @version 1.0
+ **/
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Slf4j
