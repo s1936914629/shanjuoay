@@ -100,5 +100,7 @@ public interface Cache {
      */
     Long incrBy(String key, Long delta);
 
+    
+
 
 }
